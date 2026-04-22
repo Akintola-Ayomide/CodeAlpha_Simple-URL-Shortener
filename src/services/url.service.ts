@@ -30,6 +30,13 @@ export const urlService = {
     return await prisma.url.findUnique({
       where: { shortCode }
     });
+  },
+
+  async getAllUrls() {
+    return await prisma.url.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
   }
 };
+
 

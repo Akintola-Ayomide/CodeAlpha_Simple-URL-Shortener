@@ -51,3 +51,40 @@ export const redirectToUrl = async (req: Request, res: Response, next: NextFunct
   }
 };
 
+export const getAllUrls = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const urls = await urlService.getAllUrls();
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+
+    const formattedUrls = urls.map(url => ({
+      ...url,
+      shortUrl: `${baseUrl}/${url.shortCode}`
+    }));
+
+    res.status(200).json(formattedUrls);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getUrlDetails = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { code } = req.params;
+    const urlRecord = await urlService.getOriginalUrl(code);
+
+    if (!urlRecord) {
+      return res.status(404).json({ error: 'URL not found' });
+    }
+
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    
+    res.status(200).json({
+      ...urlRecord,
+      shortUrl: `${baseUrl}/${urlRecord.shortCode}`
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
