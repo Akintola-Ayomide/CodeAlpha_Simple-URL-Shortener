@@ -7,6 +7,22 @@ A backend API for shortening URLs, managing link and redirections This project i
 - ✅ **TypeScript Foundation**: Fully typed codebase for enhanced reliability and developer experience.
 - ✅ **Modular Architecture**: Clean separation of concerns following the Controller-Service-Repository pattern.
 - ✅ **Database Integration**: Integrated **MongoDB** with **Prisma ORM** for robust data persistence.
+- ✅ **URL Shortening**: Generate unique, compact short codes for any valid URL.
+- ✅ **Redirection**: Instant 302 redirection from short links to original destinations.
+- ✅ **URL Management**: Endpoints to list all shortened URLs and view specific details.
+- ✅ **Validation & Safety**: Robust input validation using `express-validator`.
+- ✅ **Error Handling**: Standardized error responses for missing data and invalid inputs.
+
+## API Endpoints
+
+### URL Operations
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/urls/shorten` | Shorten a new URL (requires `originalUrl` in body) |
+| `GET` | `/api/urls` | Get a list of all shortened URLs |
+| `GET` | `/api/urls/:code` | Get details for a specific short code |
+| `GET` | `/:code` | Redirect to the original URL |
+
 
 
 ## Project Structure
