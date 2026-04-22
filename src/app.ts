@@ -7,9 +7,11 @@ import routes from './routes';
 
 import { errorConverter, errorHandler } from './middleware/error.middleware';
 import { redirectToUrl } from './controllers/url.controller';
+import { codeValidationRules, validate } from './middleware/validate.middleware';
 
 
 const app: Application = express();
+
 
 // Middleware
 app.use(helmet());
@@ -25,7 +27,8 @@ if (config.nodeEnv === 'development') {
 app.use('/api', routes);
 
 // Redirect route
-app.get('/:code', redirectToUrl);
+app.get('/:code', codeValidationRules, validate, redirectToUrl);
+
 
 
 // convert error to ApiError, if needed

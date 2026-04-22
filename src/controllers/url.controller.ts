@@ -3,23 +3,9 @@ import { urlService } from '../services/url.service';
 
 export const createShortUrl = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!req.body) {
-      return res.status(400).json({ error: 'Request body is missing or invalid' });
-    }
     const { originalUrl } = req.body;
-
-    if (!originalUrl) {
-      return res.status(400).json({ error: 'Original URL is required' });
-    }
-
-    // Basic URL validation
-    try {
-      new URL(originalUrl);
-    } catch (err) {
-      return res.status(400).json({ error: 'Invalid URL format' });
-    }
-
     const urlRecord = await urlService.shortenUrl(originalUrl);
+
     
     // Construct short URL
     const baseUrl = `${req.protocol}://${req.get('host')}`;
