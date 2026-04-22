@@ -6,6 +6,8 @@ import { config } from './config';
 import routes from './routes';
 
 import { errorConverter, errorHandler } from './middleware/error.middleware';
+import { redirectToUrl } from './controllers/url.controller';
+
 
 const app: Application = express();
 
@@ -21,6 +23,10 @@ if (config.nodeEnv === 'development') {
 
 // Routes
 app.use('/api', routes);
+
+// Redirect route
+app.get('/:code', redirectToUrl);
+
 
 // convert error to ApiError, if needed
 app.use(errorConverter);
