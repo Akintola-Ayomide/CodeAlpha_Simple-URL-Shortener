@@ -12,6 +12,8 @@ A backend API for shortening URLs, managing link and redirections This project i
 - ✅ **URL Management**: Endpoints to list all shortened URLs and view specific details.
 - ✅ **Validation & Safety**: Robust input validation using `express-validator`.
 - ✅ **Error Handling**: Standardized error responses for missing data and invalid inputs.
+- ✅ **Rate Limiting**: Security layer to prevent API abuse and spamming (global and per-endpoint).
+- ✅ **Automatic Expiration**: Background cleanup service that removes URLs 10 days after creation.
 
 ## API Endpoints
 
@@ -32,14 +34,13 @@ src/
 ├── config/         # App configuration and environment variables
 ├── controllers/    # Route handlers (Request/Response logic)
 ├── lib/            # Shared libraries (Prisma client instance)
-├── middleware/    # Custom Express middleware (Error handling, validation)
-├── models/         # TypeScript interfaces and Data Transfer Objects
+├── middleware/    # Custom Express middleware (Error handling, validation, rate limiting)
 ├── routes/         # API route definitions
-├── services/       # Core business logic
-├── types/          # Global TypeScript types
-├── utils/          # Shared utility functions
+├── services/       # Core business logic and background cleanup tasks
+├── validations/    # Input validation schemas and rules
 ├── app.ts          # Express application setup
-└── server.ts       # Server entry point
+├── server.ts       # Server entry point
+└── test-db.ts      # Database connection test script
 ```
 
 ## Getting Started
