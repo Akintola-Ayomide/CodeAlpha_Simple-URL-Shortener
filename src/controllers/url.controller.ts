@@ -25,7 +25,7 @@ export const createShortUrl = async (req: Request, res: Response, next: NextFunc
 export const redirectToUrl = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { code } = req.params;
-    const urlRecord = await urlService.getOriginalUrl(code);
+    const urlRecord = await urlService.getOriginalUrl(code as string);
 
     if (!urlRecord) {
       return res.status(404).json({ error: 'URL not found' });
@@ -56,7 +56,7 @@ export const getAllUrls = async (req: Request, res: Response, next: NextFunction
 export const getUrlDetails = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { code } = req.params;
-    const urlRecord = await urlService.getOriginalUrl(code);
+    const urlRecord = await urlService.getOriginalUrl(code as string);
 
     if (!urlRecord) {
       return res.status(404).json({ error: 'URL not found' });

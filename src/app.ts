@@ -8,6 +8,7 @@ import routes from './routes';
 import { errorConverter, errorHandler } from './middleware/error.middleware';
 import { redirectToUrl } from './controllers/url.controller';
 import { codeValidationRules, validate } from './middleware/validate.middleware';
+import { apiLimiter } from './middleware/rate-limit.middleware';
 
 
 const app: Application = express();
@@ -24,10 +25,10 @@ if (config.nodeEnv === 'development') {
 }
 
 // Routes
-app.use('/api', routes);
+app.use('/api', apiLimiter, routes);
 
 // Redirect route
-app.get('/:code', codeValidationRules, validate, redirectToUrl);
+app.get('/:code', apiLimiter, codeValidationRules, validate, redirectToUrl);
 
 
 
