@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -7,7 +7,8 @@ import routes from './routes';
 
 import { errorConverter, errorHandler } from './middleware/error.middleware';
 import { redirectToUrl } from './controllers/url.controller';
-import { codeValidationRules, validate } from './middleware/validate.middleware';
+import { validate } from './middleware/validate.middleware';
+import { codeValidationRules } from './validations/url.validation';
 import { apiLimiter } from './middleware/rate-limit.middleware';
 
 
