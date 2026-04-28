@@ -14,6 +14,9 @@ A backend API for shortening URLs, managing link and redirections This project i
 - ✅ **Error Handling**: Standardized error responses for missing data and invalid inputs.
 - ✅ **Rate Limiting**: Security layer to prevent API abuse and spamming (global and per-endpoint).
 - ✅ **Automatic Expiration**: Background cleanup service that removes URLs 10 days after creation.
+- ✅ **React Frontend (Client)**: A modern, responsive user interface built with React, Vite, and Tailwind CSS.
+- ✅ **Interactive UI Components**: Includes URL input, dynamic result cards, and an activity table for recent links.
+- ✅ **Clipboard Integration**: Seamless one-click copy functionality with visual toast notifications for better UX.
 
 ## API Endpoints
 
@@ -30,6 +33,7 @@ A backend API for shortening URLs, managing link and redirections This project i
 ## Project Structure
 
 ```text
+client/             # React frontend application (Vite + Tailwind)
 src/
 ├── config/         # App configuration and environment variables
 ├── controllers/    # Route handlers (Request/Response logic)
