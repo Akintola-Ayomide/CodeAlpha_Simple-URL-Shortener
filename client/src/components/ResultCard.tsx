@@ -16,7 +16,7 @@ export function ResultCard({ shortUrl, onCopy }: ResultCardProps) {
       </div>
       <button 
         onClick={onCopy}
-        className="flex items-center gap-2 rounded-xl bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all active:scale-95"
+        className="flex items-center gap-2 rounded-xl bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all active:scale-95 cursor-pointer"
       >
         <Copy size={16} />
         Copy

@@ -14,7 +14,8 @@ export default function App() {
     setShowResult(true)
   }
 
-  const copyToClipboard = () => {
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text)
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3000)
   }
@@ -70,12 +71,12 @@ export default function App() {
           {showResult && (
             <ResultCard 
               shortUrl="lslim.co/gh-repo-72" 
-              onCopy={copyToClipboard} 
+              onCopy={() => handleCopy("lslim.co/gh-repo-72")} 
             />
           )}
         </div>
 
-        <ActivityTable links={recentLinks} />
+        <ActivityTable links={recentLinks} onCopy={handleCopy} />
       </main>
 
       <Toast show={showToast} message="Link copied!" />

@@ -10,13 +10,10 @@ interface ActivityLink {
 
 interface ActivityTableProps {
   links: ActivityLink[]
+  onCopy: (text: string) => void
 }
 
-export function ActivityTable({ links }: ActivityTableProps) {
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
-  }
-
+export function ActivityTable({ links, onCopy }: ActivityTableProps) {
   return (
     <div className="mt-24 space-y-8">
       <div className="flex items-center justify-between">
@@ -43,10 +40,10 @@ export function ActivityTable({ links }: ActivityTableProps) {
                 </td>
                 <td className="px-6 py-5">
                   <div className="flex items-center gap-2">
-                    <a href="#" className="text-sm font-medium text-indigo-500 hover:underline">{link.short}</a>
+                    <a href="#" className="text-sm font-medium text-indigo-500 hover:underline cursor-pointer">{link.short}</a>
                     <button
-                      onClick={() => copyToClipboard(link.short)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-indigo-500"
+                      onClick={() => onCopy(link.short)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-indigo-500 cursor-pointer"
                       title="Copy short link"
                     >
                       <Copy size={14} />
@@ -61,7 +58,7 @@ export function ActivityTable({ links }: ActivityTableProps) {
           </tbody>
         </table>
         <div className="border-t bg-slate-50/30 px-6 py-4 text-center">
-          <button className="text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+          <button className="text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors cursor-pointer">
             View all links
           </button>
         </div>

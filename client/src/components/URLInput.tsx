@@ -19,7 +19,7 @@ export function URLInput({ url, setUrl, onShorten }: URLInputProps) {
       />
       <button 
         onClick={onShorten}
-        className="rounded-xl bg-indigo-600 px-8 py-3.5 text-sm font-bold text-white hover:bg-indigo-700 transition-all active:scale-[0.98]"
+        className="rounded-xl bg-indigo-600 px-8 py-3.5 text-sm font-bold text-white hover:bg-indigo-700 transition-all active:scale-[0.98] cursor-pointer"
       >
         Shorten URL
       </button>
