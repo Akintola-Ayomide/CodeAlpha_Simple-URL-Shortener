@@ -17,7 +17,14 @@ const app: Application = express();
 
 // Middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',  // Vite dev server
+    'http://localhost:4173',  // Vite preview
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

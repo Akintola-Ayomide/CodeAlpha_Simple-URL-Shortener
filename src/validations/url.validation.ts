@@ -11,6 +11,6 @@ export const codeValidationRules = [
   param('code')
     .trim()
     .notEmpty().withMessage('Short code is required')
-    .isAlphanumeric().withMessage('Short code must be alphanumeric')
+    .matches(/^[A-Za-z0-9_-]+$/).withMessage('Invalid short code format')
     .isLength({ min: 1, max: 20 }).withMessage('Invalid short code length')
 ];
